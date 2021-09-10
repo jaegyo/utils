@@ -10,3 +10,7 @@ csv_log_generator.py를 개선
 
 ## extract_process_list_from_csf_file_02.py
 csf file에서 process list 추출한다 (process의 사용여부는 idle로 확인한다)
+
+## 210910_crawler_example.ipynb
+crawler 연습.
+목표 - table 형태를 자료를 읽고 처리한다. 
