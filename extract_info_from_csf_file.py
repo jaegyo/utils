@@ -1,4 +1,6 @@
 # https://docs.python.org/3/library/xml.etree.elementtree.html
+# 할일 xpath 검토
+# https://docs.python.org/ko/3/library/xml.etree.elementtree.html#elementtree-xpath
 
 import xml.etree.ElementTree as ET
 
