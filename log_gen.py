@@ -3,6 +3,7 @@
 # todo -
 #  윈도우, 리눅스 디렉토리 구분자가 달라. header를 계속 찍음.
 #  파일을 하나만 만듦. 날짜별로 만들어야 함 (옵션별로 시간단위로 찍을수도 있음)
+#  기능을 펑션으로 구분하였으니. main 함수로 정리가 필요함
 
 import csv
 from datetime import date, datetime
