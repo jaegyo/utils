@@ -1,5 +1,7 @@
 # 베트남 oled log file 생성 프로그램. (1일 1로그)
 # 210923 j 처음 만듦
+# todo -
+#  윈도우, 리눅스 디렉토리 구분자가 달라. header를 계속 찍음.
 
 import csv
 from datetime import date, datetime
