@@ -2,6 +2,7 @@
 # 210923 j 처음 만듦
 # todo -
 #  윈도우, 리눅스 디렉토리 구분자가 달라. header를 계속 찍음.
+#  파일을 하나만 만듦. 날짜별로 만들어야 함 (옵션별로 시간단위로 찍을수도 있음)
 
 import csv
 from datetime import date, datetime
