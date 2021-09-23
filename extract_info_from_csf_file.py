@@ -29,8 +29,9 @@ for cChannelParameter in root.findall('./NetworkChannel//cChannelParameter'):
     USE = cChannelParameter.find('USE').text
     if USE == 'false':
         continue
+    Desc = cChannelParameter.find('Desc').text
     ChannelType = cChannelParameter.find('ChannelType').text
-    print(f'{ChannelNum}, {USE}, {ChannelType}')
+    print(f'{ChannelNum}, {USE}, {Desc}, {ChannelType}')
 
 
 print(f'-------------')
