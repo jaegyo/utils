@@ -8,6 +8,9 @@ csv format file에서 awk를 이용해 간단하게 산술값을 만든다
 csv format dumy log file을 만든다  
 csv_log_generator.py를 개선 
 
+## log_gen.py
+베트남 oled print log 관련 (1일 1log)
+
 ## extract_info_from_csf_file.py
 extract_process_list_from_csf_file 개선 버전
 
