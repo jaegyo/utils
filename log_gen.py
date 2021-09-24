@@ -1,9 +1,9 @@
 # 베트남 oled log file 생성 프로그램. (1일 1로그)
 # 210923 j 처음 만듦
 # todo -
-#  윈도우, 리눅스 디렉토리 구분자가 달라. header를 계속 찍음.
-#  파일을 하나만 만듦. 날짜별로 만들어야 함 (옵션별로 시간단위로 찍을수도 있음)
-#  기능을 펑션으로 구분하였으니. main 함수로 정리가 필요함
+#  v 윈도우, 리눅스 디렉토리 구분자가 달라. header를 계속 찍음.
+#  v 파일을 하나만 만듦(버그) 날짜별로 만들어야 함 (옵션별로 시간단위로 찍을수도 있음)
+#  v 기능을 펑션으로 구분하였으니. main 함수로 정리가 필요함
 
 import csv
 from datetime import date, datetime
@@ -179,13 +179,46 @@ def make_csv_data(pcb_barcode):
     return csv_data
 
 
-while True:
-    with open(filename, 'a', newline='') as f:
-        writer = csv.writer(f)
-        if not file_has_header:
-            writer.writerow(make_csv_header())
-        writer.writerow(make_csv_data(pcb_barcode))
-        pcb_barcode += 1  # pcb_barcode는 1씩 증가한다.
+if __name__ == '__main__':
 
-    rand_time = random.randint(25, 35)
-    time.sleep(rand_time)
+    # log 성격을 정한다.
+    log_by_daily = False   
+
+    if log_by_daily:
+        log_directory_name = 'logs_daily'
+    else:
+        log_directory_name = 'logs_min'
+
+    log_directory = '.' + os.sep + log_directory_name
+
+    if not os.path.exists(log_directory):
+        os.mkdir(log_directory)
+
+    pcb_barcode = 0
+
+    while True:
+        # 로그 파일을 확인한다.
+        if log_by_daily:
+            file_name = date.today().strftime('%Y%m%d')          # 날짜 기준
+        else:
+            file_name = datetime.now().strftime('%Y%m%d%H%M')    # 분 기준
+
+        filename = log_directory + os.sep + file_name + '.txt'
+
+        file_has_header = True if os.path.exists(filename) else False
+
+        # 확인된 로그파일에 로그를 찍는다
+        with open(filename, 'a', newline='') as f:
+            writer = csv.writer(f)
+            if not file_has_header:
+                writer.writerow(make_csv_header())
+            writer.writerow(make_csv_data(pcb_barcode))
+            pcb_barcode += 1  # pcb_barcode는 1씩 증가한다.
+
+        # 일정시간을 쉰다
+        if log_by_daily:
+            sleep_time = random.randint(25, 35)  # 일단위 로그일때, 25~35초 sleep
+        else:
+            sleep_time = 0.5                     # 분단위 로그일때, 0.5초 단위
+
+        time.sleep(sleep_time)
